@@ -5,18 +5,22 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GuessNumber {
+
+    // Instansvariabler
     Random ran = new Random();
     Scanner sc = new Scanner(System.in);
     protected int correctNumber;
     protected int guessNumber;
-    // ArrayList<Integer> guessedNumbers = new ArrayList<>();
     protected int counter;
     protected boolean runGame;
 
+    // Constructor som kör programmet när objekt skapas i main
     public GuessNumber() {
         playGame();
     }
 
+    // Play game metod som använder nödvändiga variabler samt startar spelet genom
+    // att kalla på metoder som kör logigen i spelet.
     public void playGame() {
         correctNumber = ran.nextInt(100) + 1;
         runGame = true;
@@ -27,20 +31,27 @@ public class GuessNumber {
 
     }
 
+    // Metod för att gissa nummber
+
     public void numberGuess() {
 
         do {
 
             counter++;
-
+            // Gissning startar på counter + 1, counter + 2 osv osv för ......
             System.out.print("Gissning " + counter + ": ");
+            // Try/catch metod för att specificera att input måste vara int
             try {
                 guessNumber = sc.nextInt();
 
+                // If/else statements som ger olika utslag beroende på om man gissat rätt/för
+                // högt/för lågt/fel input
                 if (guessNumber == correctNumber) {
 
                     System.out.println(
                             "Rätt! Talet är " + correctNumber + " och du gissade rätt på " + counter + " försök");
+                    // Om man gissat rätt kallas metoden för att ge spelaren möjlighet att starta om
+                    // spelet.
                     restartGame();
 
                 } else if (correctNumber > guessNumber) {
@@ -59,6 +70,9 @@ public class GuessNumber {
 
     }
 
+    // Metod för att starta om spelet om spelaren väljer ja som input, avslutar
+    // speler om nej ges som input, samt startar om frågan om spelaren varken svarat
+    // ja eller nej
     public void restartGame() {
         System.out.println("Vill du spela igen? (JA/NEJ)");
 
