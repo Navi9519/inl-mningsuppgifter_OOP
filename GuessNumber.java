@@ -85,8 +85,8 @@ public class GuessNumber {
             System.out.println("Tack för den här gången!");
 
             runGame = false;
-        } else if (!choice.equalsIgnoreCase("ja") || choice.equalsIgnoreCase("nej")) {
-            System.out.println("Du måste svara Ja eller nej");
+        } else {
+            System.out.println("Du måste svara Ja eller Nej");
             restartGame();
         }
 
