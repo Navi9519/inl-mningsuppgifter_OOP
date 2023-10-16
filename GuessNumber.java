@@ -19,8 +19,7 @@ public class GuessNumber {
         playGame();
     }
 
-    // Play game metod som använder nödvändiga variabler samt startar spelet genom
-    // att kalla på metoder som kör logigen i spelet.
+    // Play game metod där spelaren gissar rätt nummer
     public void playGame() {
         correctNumber = ran.nextInt(100) + 1;
         runGame = true;
@@ -44,14 +43,11 @@ public class GuessNumber {
             try {
                 guessNumber = sc.nextInt();
 
-                // If/else statements som ger olika utslag beroende på om man gissat rätt/för
-                // högt/för lågt/fel input
                 if (guessNumber == correctNumber) {
 
                     System.out.println(
                             "Rätt! Talet är " + correctNumber + " och du gissade rätt på " + counter + " försök");
-                    // Om man gissat rätt kallas metoden för att ge spelaren möjlighet att starta om
-                    // spelet.
+
                     restartGame();
 
                 } else if (correctNumber > guessNumber) {
@@ -62,6 +58,8 @@ public class GuessNumber {
                 }
 
             } catch (InputMismatchException e) {
+                // counter-- fel inmatning påverkar inte antalet gissningar
+                counter--;
                 System.out.println("Du kan bara svara med siffror. Försök igen: ");
                 sc.next();
             }
@@ -70,15 +68,14 @@ public class GuessNumber {
 
     }
 
-    // Metod för att starta om spelet om spelaren väljer ja som input, avslutar
-    // speler om nej ges som input, samt startar om frågan om spelaren varken svarat
-    // ja eller nej
+    // Metod för att starta om spelet beroende på vad spelare väljer
     public void restartGame() {
         System.out.println("Vill du spela igen? (JA/NEJ)");
 
         String choice = sc.next();
 
         if (choice.equalsIgnoreCase("ja")) {
+            // reseter counter(gissningar) om nytt spel väljs
             counter = 0;
             playGame();
         } else if (choice.equalsIgnoreCase("nej")) {
