@@ -16,7 +16,7 @@ public class GuessNumber {
 
     // Constructor som kör programmet när objekt skapas i main
     public GuessNumber() {
-        playGame();
+        // playGame();
     }
 
     // Play game metod där spelaren gissar rätt nummer
