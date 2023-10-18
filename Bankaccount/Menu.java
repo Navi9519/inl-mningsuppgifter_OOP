@@ -4,10 +4,9 @@ import java.util.Scanner;
 
 public class Menu {
     Scanner sc = new Scanner(System.in);
-    RegisterAccount register = new RegisterAccount();
-    SavingsAccount menu2 = new SavingsAccount();
-    boolean runMenu;
-    int choice;
+    private RegisterAccount register = new RegisterAccount();
+    private boolean runMenu;
+    private int choice;
 
     public Menu() {
         runMenu = true;
@@ -26,7 +25,7 @@ public class Menu {
             }
 
             else if (choice == 2) {
-                menu2.MenuAccount();
+                register.menuAccount();
             } else if (choice == 3) {
                 System.out.println("Du avslutade menyn");
                 runMenu = false;
