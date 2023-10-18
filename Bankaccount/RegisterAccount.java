@@ -71,11 +71,11 @@ public class RegisterAccount {
 
             if (checkAccount == user.getAccountNumber()) {
 
-                System.out.println("Kontot exsiterar!!!!");
+                System.out.println("Kontonummer: " + user.getAccountNumber() + " -> inloggad");
                 accountExists = true;
 
                 do {
-                    System.out.println("****KONTOMENY**** - Konto: " + checkAccount);
+                    System.out.println("****KONTOMENY**** - Konto: " + user.getAccountNumber());
                     System.out.println("1. Ta ut pengar ");
                     System.out.println("2. Sätt in pengar ");
                     System.out.println("3. Visa Saldo ");

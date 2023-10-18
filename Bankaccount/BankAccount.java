@@ -17,16 +17,16 @@ public class BankAccount {
 
     public void depositMoney(double amount) {
         setBalance(getBalance() + amount);
-        System.out.println("The deposit was succesful, you transferred " + amount + " kr");
+        System.out.println(" Överförningen lyckades, du överförde " + amount + " kr");
 
     }
 
     public void withDrawMoney(double amount) {
         if (getBalance() >= amount) {
             setBalance(getBalance() - amount);
-            System.out.println("Wihdrawal of " + amount + " succesful. Current balance is " + getBalance());
+            System.out.println("Uttag av " + amount + " kr lyckades! Nuvarande saldo är: " + getBalance());
         } else {
-            System.out.println("Insufficent funds. withdrawal failed");
+            System.out.println("Otillräckliga medel. Uttag misslyckades ");
         }
 
     }
