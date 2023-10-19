@@ -2,8 +2,6 @@ package Bankaccount;
 
 import java.util.Scanner;
 
-import javax.sound.midi.SysexMessage;
-
 public class BankAccount {
     Scanner sc = new Scanner(System.in);
     private double balance;
@@ -42,12 +40,12 @@ public class BankAccount {
 
     public String balanceToString() {
 
-        return "Your balance is " + getBalance() + " kr";
+        return "Ditt saldo är " + getBalance() + " kr";
 
     }
 
     public String toString() {
-        return "Accountnumber: " + this.accountNumber;
+        return "Kontonummer: " + this.accountNumber;
     }
 
     public int getAccountNumber() {
