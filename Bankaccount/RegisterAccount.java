@@ -2,6 +2,8 @@ package Bankaccount;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterAccount {
     Scanner sc = new Scanner(System.in);
@@ -13,6 +15,7 @@ public class RegisterAccount {
     private int checkAccount;
     private int inputNumber;
     private double amount;
+    private String StringInputNumber;
 
     public RegisterAccount() {
 
@@ -23,40 +26,46 @@ public class RegisterAccount {
 
         do {
             System.out.print("Ange kontonummer>");
-            inputNumber = sc.nextInt();
+            StringInputNumber = sc.next();
+
+            // Metod för att specificera att kontonummer måste vara 4 siffror
+            Matcher m = Pattern.compile("\\d{4}").matcher(StringInputNumber);
+            if (m.matches()) {
+
+                checkRegisterUser();
+
+            } else {
+                System.out.println("Kontonummer måste innehålla exakt 4-siffror");
+            }
 
             accountExists = false; // Kollar om accountnummer existerar
 
-            for (BankAccount u : listOfUsers) {
-                if (u.getAccountNumber() == inputNumber) {
-                    accountExists = true;
-                    break; // Kontonumret finns redan, behöver inte fortsätta kolla
-                }
-            }
-
-            if (accountExists) {
-                System.out.println("Kontot existerar redan");
-                createUser = false;
-            } else {
-                listOfUsers.add(new BankAccount(inputNumber, 0));
-                System.out.println("Du har skapat kontot!");
-                createUser = false;
-            }
-
-            // System.out.print("Vill du lägga till ett annat konto? (ja/nej): ");
-            // String answer = sc.next();
-
-            // if (!answer.equalsIgnoreCase("ja")) {
-            // createUser = false;
-            // }
-
-            // Printar alla användare för att se att de skapas
-            for (BankAccount u : listOfUsers) {
-                System.out.println(u.toString());
-            }
-
         } while (createUser);
 
+    }
+
+    // Metod för att checka om kontonummer existerar + lägga till konto
+    public void checkRegisterUser() {
+        inputNumber = Integer.parseInt(StringInputNumber);
+        for (BankAccount u : listOfUsers) {
+            if (u.getAccountNumber() == inputNumber) {
+                accountExists = true;
+                break; // Kontonumret finns redan, behöver inte fortsätta kolla
+            }
+        }
+
+        if (accountExists) {
+            System.out.println("Kontot existerar redan");
+            createUser = false;
+        } else {
+            listOfUsers.add(new BankAccount(inputNumber, 0));
+            System.out.println("Du har skapat kontot!");
+            createUser = false;
+        }
+
+        for (BankAccount u : listOfUsers) {
+            System.out.println(u.toString());
+        }
     }
 
     // Meny för administera konto

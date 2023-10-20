@@ -1,5 +1,5 @@
-import java.sql.Array;
-import java.util.ArrayList;
+package Guessnumber;
+
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
